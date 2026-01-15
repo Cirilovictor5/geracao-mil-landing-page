@@ -50,11 +50,18 @@ export default function PlanosMobile() {
         </div>
 
         {/* Card Plano Completo - MINI */}
-        <div className="relative bg-gradient-to-br from-[#fdc700] to-[#ffdf20] rounded-lg p-3 mb-2.5 shadow-md border border-[#1c398e]">
+        <div className="relative bg-gradient-to-br from-[#fdc700] to-[#fdb700] rounded-lg p-3 mb-2.5 shadow-xl border-2 border-[#1c398e]">
           {/* Badge "MAIS POPULAR" */}
-          <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 bg-[#1c398e] px-2.5 py-0.5 rounded-full shadow-sm">
+          <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 bg-[#1c398e] px-2.5 py-0.5 rounded-full shadow-md z-10">
             <p className="font-['Arimo:Bold',sans-serif] font-bold text-[9px] leading-[12px] text-[#fdc700] text-center">
               ⭐ MAIS POPULAR
+            </p>
+          </div>
+
+          {/* NOVO: Badge de Promoção - Lado Superior Direito */}
+          <div className="absolute -top-2 -right-2 bg-gradient-to-br from-red-600 to-red-500 px-3 py-1.5 rounded-full shadow-lg z-10 border-2 border-white animate-pulse">
+            <p className="font-['Arimo:Bold',sans-serif] font-bold text-[10px] leading-[12px] text-white text-center">
+              🔥 -40%
             </p>
           </div>
 
@@ -68,17 +75,28 @@ export default function PlanosMobile() {
             </p>
           </div>
 
-          {/* Preço */}
-          <div className="text-center mb-2 pb-2 border-b border-[#1c398e]/30">
+          {/* Preço COM DESTAQUE DE PROMOÇÃO */}
+          <div className="text-center mb-2 pb-2 border-b-2 border-[#1c398e]/40">
+            {/* Preço Original Riscado */}
+            <div className="mb-1">
+              <span className="font-['Arimo:Bold',sans-serif] font-bold text-[14px] leading-[16px] text-[#193cb8] line-through opacity-70">
+                De R$ 199,90
+              </span>
+            </div>
+            
+            {/* Preço Promocional */}
             <div className="flex items-center justify-center gap-1 mb-0.5">
-              <span className="font-['Arimo:Bold',sans-serif] font-bold text-[28px] leading-[32px] text-[#1c398e]">
+              <span className="font-['Arimo:Bold',sans-serif] font-bold text-[32px] leading-[36px] text-[#1c398e]">
                 R$ 129,90
               </span>
-              <span className="font-['Arimo:Bold',sans-serif] font-bold text-[13px] leading-[16px] text-[#193cb8]">
+              <span className="font-['Arimo:Bold',sans-serif] font-bold text-[14px] leading-[18px] text-[#193cb8]">
                 /mês
               </span>
             </div>
-            <p className="font-['Arimo:Regular',sans-serif] text-[9px] leading-[12px] text-[#193cb8]">
+            <p className="font-['Arimo:Bold',sans-serif] font-bold text-[10px] leading-[14px] text-red-700">
+              ⚡ ECONOMIA DE R$ 70,00/mês!
+            </p>
+            <p className="font-['Arimo:Regular',sans-serif] text-[9px] leading-[12px] text-[#193cb8] mt-1">
               ⏰ A partir de fevereiro/2026
             </p>
           </div>
@@ -165,9 +183,9 @@ export default function PlanosMobile() {
         </div>
 
         {/* Divisor */}
-        <div className="flex items-center gap-2 mb-2.5">
+        <div className="relative flex items-center gap-2 mb-2.5 py-4">
           <div className="flex-1 h-px bg-gradient-to-r from-transparent via-[#cbd5e1] to-transparent"></div>
-          <p className="font-['Arimo:Regular',sans-serif] text-[9px] leading-[12px] text-[#6b7280]">
+          <p className="font-['Arimo:Regular',sans-serif] text-[9px] leading-[12px] text-[#6b7280] relative z-10 bg-white px-2">
             ou
           </p>
           <div className="flex-1 h-px bg-gradient-to-r from-transparent via-[#cbd5e1] to-transparent"></div>

@@ -34,39 +34,48 @@ export default function HistoriaSection() {
 
           {/* Card Branco Container - Para criar contraste */}
           <div className="bg-white rounded-[16px] p-3 mb-4 shadow-md">
-            {/* Card Azul - Resultados */}
-            <div 
-              className="bg-gradient-to-br from-[#1c398e] to-[#193cb8] rounded-[14px] p-4 shadow-lg border-2 border-[#fdc700]"
-            >
-              <h3 className="font-['Arimo:Bold',sans-serif] font-bold text-[18px] leading-[24px] text-[#fdc700] mb-3">
-                Resultados que falam por si
-              </h3>
-              
-              <div className="space-y-2">
+            {/* Título da Caixa */}
+            <h3 className="font-['Arimo:Bold',sans-serif] font-bold text-[18px] leading-[24px] text-[#1c398e] mb-3 text-center">
+              Resultados que falam por si
+            </h3>
+            
+            {/* 4 Mini-Cards Brancos com Bordas Azuis */}
+            <div className="space-y-2">
+              {/* Card 1 */}
+              <div className="bg-white rounded-xl p-3 border-2 border-[#1c398e] shadow-sm">
                 <div className="flex gap-3 items-start">
-                  <span className="text-[16px] shrink-0">✔️</span>
-                  <p className="font-['Arimo:Regular',sans-serif] text-[14px] leading-[20px] text-white">
+                  <span className="text-[18px] shrink-0">✔️</span>
+                  <p className="font-['Arimo:Bold',sans-serif] font-bold text-[14px] leading-[20px] text-[#1c398e]">
                     Mais de 1.000 alunos aprovados
                   </p>
                 </div>
-                
+              </div>
+              
+              {/* Card 2 */}
+              <div className="bg-white rounded-xl p-3 border-2 border-[#1c398e] shadow-sm">
                 <div className="flex gap-3 items-start">
-                  <span className="text-[16px] shrink-0">✔️</span>
-                  <p className="font-['Arimo:Regular',sans-serif] text-[14px] leading-[20px] text-white">
+                  <span className="text-[18px] shrink-0">✔️</span>
+                  <p className="font-['Arimo:Bold',sans-serif] font-bold text-[14px] leading-[20px] text-[#1c398e]">
                     Estudantes de alto padrão acadêmico
                   </p>
                 </div>
-                
+              </div>
+              
+              {/* Card 3 */}
+              <div className="bg-white rounded-xl p-3 border-2 border-[#1c398e] shadow-sm">
                 <div className="flex gap-3 items-start">
-                  <span className="text-[16px] shrink-0">✔️</span>
-                  <p className="font-['Arimo:Regular',sans-serif] text-[14px] leading-[20px] text-white">
+                  <span className="text-[18px] shrink-0">✔️</span>
+                  <p className="font-['Arimo:Bold',sans-serif] font-bold text-[14px] leading-[20px] text-[#1c398e]">
                     Aprovações em universidades e concursos em todo o país
                   </p>
                 </div>
-                
+              </div>
+              
+              {/* Card 4 */}
+              <div className="bg-white rounded-xl p-3 border-2 border-[#1c398e] shadow-sm">
                 <div className="flex gap-3 items-start">
-                  <span className="text-[16px] shrink-0">✔️</span>
-                  <p className="font-['Arimo:Regular',sans-serif] text-[14px] leading-[20px] text-white">
+                  <span className="text-[18px] shrink-0">✔️</span>
+                  <p className="font-['Arimo:Bold',sans-serif] font-bold text-[14px] leading-[20px] text-[#1c398e]">
                     Histórias reais de superação, crescimento e conquista
                   </p>
                 </div>
