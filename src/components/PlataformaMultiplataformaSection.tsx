@@ -122,63 +122,63 @@ export default function PlataformaMultiplataformaSection() {
             Recursos da plataforma
           </h4>
 
-          <div className="space-y-4">
-            {/* Recurso 1 */}
-            <div>
-              <h5 className="font-['Arimo:Bold',sans-serif] font-bold text-[15px] leading-[20px] text-[#fdc700] mb-1">
+          <div className="space-y-3">
+            {/* Recurso 1 - CARD COM FUNDO */}
+            <div className="bg-white rounded-xl p-3 border-2 border-[#fdc700] shadow-md">
+              <h5 className="font-['Arimo:Bold',sans-serif] font-bold text-[15px] leading-[20px] text-[#1c398e] mb-1">
                 📹 Videoaulas HD
               </h5>
-              <p className="font-['Arimo:Regular',sans-serif] text-[13px] leading-[18px] text-white/90">
+              <p className="font-['Arimo:Regular',sans-serif] text-[13px] leading-[18px] text-[#4a5565]">
                 Aulas gravadas com altíssima qualidade de imagem e som
               </p>
             </div>
 
-            {/* Recurso 2 */}
-            <div>
-              <h5 className="font-['Arimo:Bold',sans-serif] font-bold text-[15px] leading-[20px] text-[#fdc700] mb-1">
+            {/* Recurso 2 - CARD COM FUNDO */}
+            <div className="bg-white rounded-xl p-3 border-2 border-[#fdc700] shadow-md">
+              <h5 className="font-['Arimo:Bold',sans-serif] font-bold text-[15px] leading-[20px] text-[#1c398e] mb-1">
                 📚 Material completo
               </h5>
-              <p className="font-['Arimo:Regular',sans-serif] text-[13px] leading-[18px] text-white/90">
+              <p className="font-['Arimo:Regular',sans-serif] text-[13px] leading-[18px] text-[#4a5565]">
                 PDFs, resumos, exercícios e simulados para download
               </p>
             </div>
 
-            {/* Recurso 3 */}
-            <div>
-              <h5 className="font-['Arimo:Bold',sans-serif] font-bold text-[15px] leading-[20px] text-[#fdc700] mb-1">
+            {/* Recurso 3 - CARD COM FUNDO */}
+            <div className="bg-white rounded-xl p-3 border-2 border-[#fdc700] shadow-md">
+              <h5 className="font-['Arimo:Bold',sans-serif] font-bold text-[15px] leading-[20px] text-[#1c398e] mb-1">
                 ⏰ Acesso ilimitado
               </h5>
-              <p className="font-['Arimo:Regular',sans-serif] text-[13px] leading-[18px] text-white/90">
+              <p className="font-['Arimo:Regular',sans-serif] text-[13px] leading-[18px] text-[#4a5565]">
                 Estude 24/7 no seu ritmo, sem restrições de horário
               </p>
             </div>
 
-            {/* Recurso 4 */}
-            <div>
-              <h5 className="font-['Arimo:Bold',sans-serif] font-bold text-[15px] leading-[20px] text-[#fdc700] mb-1">
+            {/* Recurso 4 - CARD COM FUNDO */}
+            <div className="bg-white rounded-xl p-3 border-2 border-[#fdc700] shadow-md">
+              <h5 className="font-['Arimo:Bold',sans-serif] font-bold text-[15px] leading-[20px] text-[#1c398e] mb-1">
                 ✍️ Correção de redação
               </h5>
-              <p className="font-['Arimo:Regular',sans-serif] text-[13px] leading-[18px] text-white/90">
+              <p className="font-['Arimo:Regular',sans-serif] text-[13px] leading-[18px] text-[#4a5565]">
                 Envie suas redações e receba feedback detalhado
               </p>
             </div>
 
-            {/* Recurso 5 */}
-            <div>
-              <h5 className="font-['Arimo:Bold',sans-serif] font-bold text-[15px] leading-[20px] text-[#fdc700] mb-1">
+            {/* Recurso 5 - CARD COM FUNDO */}
+            <div className="bg-white rounded-xl p-3 border-2 border-[#fdc700] shadow-md">
+              <h5 className="font-['Arimo:Bold',sans-serif] font-bold text-[15px] leading-[20px] text-[#1c398e] mb-1">
                 📊 Relatórios
               </h5>
-              <p className="font-['Arimo:Regular',sans-serif] text-[13px] leading-[18px] text-white/90">
+              <p className="font-['Arimo:Regular',sans-serif] text-[13px] leading-[18px] text-[#4a5565]">
                 Acompanhe seu progresso com estatísticas detalhadas
               </p>
             </div>
 
-            {/* Recurso 6 */}
-            <div>
-              <h5 className="font-['Arimo:Bold',sans-serif] font-bold text-[15px] leading-[20px] text-[#fdc700] mb-1">
+            {/* Recurso 6 - CARD COM FUNDO */}
+            <div className="bg-white rounded-xl p-3 border-2 border-[#fdc700] shadow-md">
+              <h5 className="font-['Arimo:Bold',sans-serif] font-bold text-[15px] leading-[20px] text-[#1c398e] mb-1">
                 🎯 Simulados
               </h5>
-              <p className="font-['Arimo:Regular',sans-serif] text-[13px] leading-[18px] text-white/90">
+              <p className="font-['Arimo:Regular',sans-serif] text-[13px] leading-[18px] text-[#4a5565]">
                 Teste seus conhecimentos com provas estilo ENEM
               </p>
             </div>

@@ -32,41 +32,44 @@ export default function HistoriaSection() {
             </p>
           </div>
 
-          {/* Card Azul - Resultados */}
-          <div 
-            className="bg-gradient-to-br from-[#1c398e] to-[#193cb8] rounded-[14px] p-4 mb-4 shadow-lg"
-          >
-            <h3 className="font-['Arimo:Bold',sans-serif] font-bold text-[18px] leading-[24px] text-[#fdc700] mb-3">
-              Resultados que falam por si
-            </h3>
-            
-            <div className="space-y-2">
-              <div className="flex gap-3 items-start">
-                <span className="text-[16px] shrink-0">✔️</span>
-                <p className="font-['Arimo:Regular',sans-serif] text-[14px] leading-[20px] text-white">
-                  Mais de 1.000 alunos aprovados
-                </p>
-              </div>
+          {/* Card Branco Container - Para criar contraste */}
+          <div className="bg-white rounded-[16px] p-3 mb-4 shadow-md">
+            {/* Card Azul - Resultados */}
+            <div 
+              className="bg-gradient-to-br from-[#1c398e] to-[#193cb8] rounded-[14px] p-4 shadow-lg border-2 border-[#fdc700]"
+            >
+              <h3 className="font-['Arimo:Bold',sans-serif] font-bold text-[18px] leading-[24px] text-[#fdc700] mb-3">
+                Resultados que falam por si
+              </h3>
               
-              <div className="flex gap-3 items-start">
-                <span className="text-[16px] shrink-0">✔️</span>
-                <p className="font-['Arimo:Regular',sans-serif] text-[14px] leading-[20px] text-white">
-                  Estudantes de alto padrão acadêmico
-                </p>
-              </div>
-              
-              <div className="flex gap-3 items-start">
-                <span className="text-[16px] shrink-0">✔️</span>
-                <p className="font-['Arimo:Regular',sans-serif] text-[14px] leading-[20px] text-white">
-                  Aprovações em universidades e concursos em todo o país
-                </p>
-              </div>
-              
-              <div className="flex gap-3 items-start">
-                <span className="text-[16px] shrink-0">✔️</span>
-                <p className="font-['Arimo:Regular',sans-serif] text-[14px] leading-[20px] text-white">
-                  Histórias reais de superação, crescimento e conquista
-                </p>
+              <div className="space-y-2">
+                <div className="flex gap-3 items-start">
+                  <span className="text-[16px] shrink-0">✔️</span>
+                  <p className="font-['Arimo:Regular',sans-serif] text-[14px] leading-[20px] text-white">
+                    Mais de 1.000 alunos aprovados
+                  </p>
+                </div>
+                
+                <div className="flex gap-3 items-start">
+                  <span className="text-[16px] shrink-0">✔️</span>
+                  <p className="font-['Arimo:Regular',sans-serif] text-[14px] leading-[20px] text-white">
+                    Estudantes de alto padrão acadêmico
+                  </p>
+                </div>
+                
+                <div className="flex gap-3 items-start">
+                  <span className="text-[16px] shrink-0">✔️</span>
+                  <p className="font-['Arimo:Regular',sans-serif] text-[14px] leading-[20px] text-white">
+                    Aprovações em universidades e concursos em todo o país
+                  </p>
+                </div>
+                
+                <div className="flex gap-3 items-start">
+                  <span className="text-[16px] shrink-0">✔️</span>
+                  <p className="font-['Arimo:Regular',sans-serif] text-[14px] leading-[20px] text-white">
+                    Histórias reais de superação, crescimento e conquista
+                  </p>
+                </div>
               </div>
             </div>
           </div>
