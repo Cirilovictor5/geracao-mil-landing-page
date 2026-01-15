@@ -48,7 +48,7 @@ export default function ResultadosInspiramSection() {
           {alunos.slice(0, 8).map((aluno, index) => (
             <div 
               key={index}
-              className="bg-white rounded-lg shadow-lg overflow-hidden transform transition-transform hover:scale-105"
+              className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform hover:scale-105"
             >
               <img 
                 src={aluno.imagem} 
@@ -60,9 +60,9 @@ export default function ResultadosInspiramSection() {
         </div>
 
         {/* Última linha: Gustavo + Mascote */}
-        <div className="grid grid-cols-2 gap-3 mb-0">
+        <div className="grid grid-cols-2 gap-3 mb-6">
           {/* Gustavo */}
-          <div className="bg-white rounded-lg overflow-hidden transform transition-transform hover:scale-105">
+          <div className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform hover:scale-105">
             <img 
               src={imgGustavo} 
               alt="Gustavo - Nota 900 em Redação"
@@ -72,18 +72,18 @@ export default function ResultadosInspiramSection() {
 
           {/* Mascote Formado ao lado do Gustavo */}
           <div className="flex items-center justify-center">
-            <div className="animate-bounce mt-12" style={{ animationDuration: '3s' }}>
+            <div className="animate-bounce" style={{ animationDuration: '3s' }}>
               <img 
                 src={imgMascoteFormado} 
                 alt="Mascote Geração MIL Formado" 
-                className="w-full h-auto object-contain drop-shadow-2xl scale-125"
+                className="w-full h-auto object-contain drop-shadow-2xl"
               />
             </div>
           </div>
         </div>
 
         {/* Call to Action */}
-        <div className="flex flex-col items-center gap-4 -mt-4">
+        <div className="flex flex-col items-center gap-4">
           <p className="font-['Arimo:Bold',sans-serif] font-bold text-[18px] leading-[24px] text-[#1c398e] text-center">
             Você também pode ser o próximo!
           </p>
