@@ -1,7 +1,7 @@
 export default function HistoriaSection() {
   return (
     <section 
-      className="hidden max-md:block w-full bg-white py-6 px-6"
+      className="block md:hidden w-full bg-white py-6 px-6"
       data-name="HistoriaSection"
     >
       <div className="max-w-[375px] mx-auto">

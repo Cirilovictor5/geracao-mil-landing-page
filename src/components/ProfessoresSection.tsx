@@ -11,8 +11,9 @@ import imgCalhauGeracaoMilCopiar1 from "figma:asset/f316e4808aa652478fb0bbb9367e
 import imgBiaGeracaoMilCopiarPng1 from "figma:asset/3580b8f20b1b0b616f842627ddae926d8d35fc84.png";
 import imgWevertonCamisaGmil1 from "figma:asset/a0e95cde4db06842ffa4bb1c27c192034429ce39.png";
 import imgImageAnderson from "figma:asset/c443b77cc2914fa0cefa6170877380bf302d0d87.png";
+import { memo } from "react";
 
-export default function ProfessoresSection() {
+const ProfessoresSection = memo(function ProfessoresSection() {
   const professores = [
     {
       nome: 'Victor Cirilo',
@@ -129,8 +130,10 @@ export default function ProfessoresSection() {
                 <div className="bg-[#f3f4f6] h-[220px] overflow-hidden">
                   <img 
                     src={professor.imagem} 
-                    alt={professor.nome}
+                    alt={`Professor ${professor.nome} - ${professor.disciplina}`}
                     className="w-full h-full object-contain"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
 
@@ -163,4 +166,6 @@ export default function ProfessoresSection() {
       </div>
     </section>
   );
-}
+});
+
+export default ProfessoresSection;

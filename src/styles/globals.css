@@ -1,5 +1,32 @@
 @custom-variant dark (&:is(.dark *));
 
+/* Performance Optimizations */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 :root {
   --font-size: 16px;
   --background: #ffffff;
@@ -183,6 +210,28 @@
 html {
   font-size: var(--font-size);
   scroll-behavior: smooth;
+}
+
+/* Mobile-first: garantir que o site seja responsivo */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+  width: 100%;
+  min-height: 100vh;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Prevenir overflow horizontal em mobile */
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 /* Estilos para placeholder dos inputs do formulário */

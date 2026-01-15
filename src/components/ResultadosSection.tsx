@@ -1,7 +1,7 @@
 export default function ResultadosSection() {
   return (
     <section 
-      className="hidden max-md:block w-full bg-gradient-to-br from-[#1c398e] to-[#193cb8] py-12 px-6"
+      className="block md:hidden w-full bg-gradient-to-br from-[#1c398e] to-[#193cb8] py-12 px-6"
       data-name="ResultadosSection"
     >
       <div className="max-w-[375px] mx-auto">

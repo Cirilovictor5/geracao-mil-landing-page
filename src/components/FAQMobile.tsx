@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, memo, useCallback } from "react";
 import { ChevronDown } from "lucide-react";
 
 type FAQItemProps = {
@@ -7,14 +7,18 @@ type FAQItemProps = {
   defaultOpen?: boolean;
 };
 
-function FAQItemMobile({ question, answer, defaultOpen = false }: FAQItemProps) {
+const FAQItemMobile = memo(function FAQItemMobile({ question, answer, defaultOpen = false }: FAQItemProps) {
   const [isOpen, setIsOpen] = useState(defaultOpen);
+  
+  const toggleOpen = useCallback(() => setIsOpen(prev => !prev), []);
 
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300">
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={toggleOpen}
         className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50 transition-colors"
+        aria-expanded={isOpen}
+        aria-label={`FAQ: ${question}`}
       >
         <span className="font-['Arimo:Bold',sans-serif] font-bold text-[14px] leading-[20px] text-[#1c398e] pr-3">
           {question}
@@ -23,6 +27,7 @@ function FAQItemMobile({ question, answer, defaultOpen = false }: FAQItemProps) 
           className={`w-5 h-5 text-[#1c398e] flex-shrink-0 transition-transform duration-300 ${
             isOpen ? 'rotate-180' : ''
           }`}
+          aria-hidden="true"
         />
       </button>
       
@@ -39,7 +44,7 @@ function FAQItemMobile({ question, answer, defaultOpen = false }: FAQItemProps) 
       </div>
     </div>
   );
-}
+});
 
 export default function FAQMobile() {
   return (

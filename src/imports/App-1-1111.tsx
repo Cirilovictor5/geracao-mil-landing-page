@@ -1,24 +1,28 @@
 import svgPaths from "./svg-f0kqj1s2ab";
 import clsx from "clsx";
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
 import PassoAPassoCompra from "../components/PassoAPassoCompra";
-import SobreGeracaoMil from "../components/SobreGeracaoMil";
-import HistoriaSection from "../components/HistoriaSection";
-import ResultadosSection from "../components/ResultadosSection";
-import ContatoMobile from "../components/ContatoMobile";
-import ProfessoresSection from "../components/ProfessoresSection";
-import ResultadosInspiramSection from "../components/ResultadosInspiramSection";
-import PlataformaMultiplataformaSection from "../components/PlataformaMultiplataformaSection";
-import AuloesPresenciaisSection from "../components/AuloesPresenciaisSection";
-import RedesSociaisSection from "../components/RedesSociaisSection";
-import MateriaisDidaticosSection from "../components/MateriaisDidaticosSection";
-import AcessoConteudoCTASection from "../components/AcessoConteudoCTASection";
-import NossoInstagramSection from "../components/NossoInstagramSection";
-import PlanosMobile from "../components/PlanosMobile";
-import PromocaoRelampagoMobile from "../components/PromocaoRelampagoMobile";
-import FAQMobile from "../components/FAQMobile";
-import FooterMobile from "../components/FooterMobile";
-import HeroSectionMobile from "../components/HeroSectionMobile";
+
+// Lazy load mobile components for better performance
+const SobreGeracaoMil = lazy(() => import("../components/SobreGeracaoMil"));
+const HistoriaSection = lazy(() => import("../components/HistoriaSection"));
+const ResultadosSection = lazy(() => import("../components/ResultadosSection"));
+const ContatoMobile = lazy(() => import("../components/ContatoMobile"));
+const ProfessoresSection = lazy(() => import("../components/ProfessoresSection"));
+const ResultadosInspiramSection = lazy(() => import("../components/ResultadosInspiramSection"));
+const PlataformaMultiplataformaSection = lazy(() => import("../components/PlataformaMultiplataformaSection"));
+const AuloesPresenciaisSection = lazy(() => import("../components/AuloesPresenciaisSection"));
+const RedesSociaisSection = lazy(() => import("../components/RedesSociaisSection"));
+const MateriaisDidaticosSection = lazy(() => import("../components/MateriaisDidaticosSection"));
+const AcessoConteudoCTASection = lazy(() => import("../components/AcessoConteudoCTASection"));
+const NossoInstagramSection = lazy(() => import("../components/NossoInstagramSection"));
+const PlanosMobile = lazy(() => import("../components/PlanosMobile"));
+const PromocaoRelampagoMobile = lazy(() => import("../components/PromocaoRelampagoMobile"));
+const FAQMobile = lazy(() => import("../components/FAQMobile"));
+const FooterMobile = lazy(() => import("../components/FooterMobile"));
+const HeroSectionMobile = lazy(() => import("../components/HeroSectionMobile"));
+import SEOHead from "../components/SEOHead";
+import PerformanceOptimizer from "../components/PerformanceOptimizer";
 import imgLogoGM from "figma:asset/33c9dc2c2bc6e55ff3118c010ec4eb5ef9214584.png";
 import imgLogoGMCircle from "figma:asset/3e7c0272f627242dfee1957a778a14ba510182a9.png";
 import imgLogoGMCirculoAmarelo from "figma:asset/f06bca7207cccce23014b3b9d9f7c8e104aaf95f.png";
@@ -995,6 +999,10 @@ function FAQItem({ question, answer, defaultOpen = false }: FAQItemProps) {
 export default function App() {
   return (
     <div className="bg-white relative w-full min-h-screen" data-name="App">
+      {/* SEO & Performance Optimization */}
+      <SEOHead />
+      <PerformanceOptimizer />
+      
       {/* Header Navigation */}
       <header className="fixed top-0 left-0 right-0 bg-white shadow-md z-50 h-[64px] md:h-[80px]" data-name="Header">
         <div className="max-w-[1528px] mx-auto px-[16px] md:px-[32px] lg:px-[48px] h-full flex items-center justify-between">
@@ -1002,8 +1010,10 @@ export default function App() {
           <div className="flex items-center gap-3">
             <img 
               src={imgLogoGMNovo} 
-              alt="Geração MIL" 
+              alt="Geração MIL - Logo" 
               className="w-10 h-10 md:w-12 md:h-12 object-contain"
+              loading="eager"
+              fetchpriority="high"
             />
             <div className="flex flex-col gap-[2px] md:gap-[4px]">
               <h1 className="font-['Arimo:Bold',sans-serif] font-bold text-[20px] md:text-[24px] lg:text-[28px] text-[#1c398e] leading-tight">Geração MIL</h1>
@@ -1043,7 +1053,8 @@ export default function App() {
               data-track="click-navigation"
               data-section="header"
               data-destination="passo-a-passo"
-              className="font-['Arimo:Bold',sans-serif] font-bold text-[14px] xl:text-[16px] text-white bg-[#1c398e] hover:bg-[#193cb8] px-[16px] xl:px-[24px] py-[10px] xl:py-[12px] rounded-[8px] transition-colors cursor-pointer"
+              className="font-['Arimo:Bold',sans-serif] font-bold text-[14px] xl:text-[16px] text-white bg-[#1c398e] hover:bg-[#193cb8] px-[16px] xl:px-[24px] py-[10px] xl:py-[12px] rounded-[8px] transition-colors cursor-pointer active:scale-95 will-change-transform"
+              aria-label="Inscreva-se no curso"
             >
               Inscreva-se
             </a>
@@ -1052,14 +1063,15 @@ export default function App() {
           {/* Mobile CTA Button */}
           <a 
             href="#passo-a-passo"
-            className="lg:hidden font-['Arimo:Bold',sans-serif] font-bold text-[12px] md:text-[14px] text-white bg-[#1c398e] hover:bg-[#193cb8] px-[12px] md:px-[16px] py-[8px] md:py-[10px] rounded-[6px] md:rounded-[8px] transition-colors cursor-pointer"
+            className="lg:hidden font-['Arimo:Bold',sans-serif] font-bold text-[12px] md:text-[14px] text-white bg-[#1c398e] hover:bg-[#193cb8] px-[12px] md:px-[16px] py-[8px] md:py-[10px] rounded-[6px] md:rounded-[8px] transition-colors cursor-pointer active:scale-95"
+            aria-label="Inscreva-se no curso"
           >
             Inscreva-se
           </a>
         </div>
       </header>
 
-      <div className="absolute content-stretch flex flex-col h-[1000px] items-start left-0 pb-0 pt-[96px] px-0 top-[980px] w-[1528px]" data-name="VideoSection" style={{ backgroundImage: "linear-gradient(146.797deg, rgb(28, 57, 142) 0%, rgb(25, 60, 184) 100%)" }}>
+      <div className="hidden md:flex absolute content-stretch flex-col h-[1000px] items-start left-0 pb-0 pt-[96px] px-0 top-[980px] w-[1528px]" data-name="VideoSection" style={{ backgroundImage: "linear-gradient(146.797deg, rgb(28, 57, 142) 0%, rgb(25, 60, 184) 100%)" }}>
         <div className="h-[808px] relative shrink-0 w-full" data-name="Container">
           <div className="absolute h-[92px] left-[16px] top-0 w-[1496px]" data-name="Container">
             <div className="absolute h-[48px] left-0 top-0 w-[1496px]" data-name="Heading 2">
@@ -1097,7 +1109,7 @@ export default function App() {
           </div>
         </div>
       </div>
-      <div id="nossa-historia" className="absolute content-stretch flex flex-col h-[1884px] items-start left-[29px] pb-0 pt-[96px] px-0 top-[1989px] w-[1528px]" data-name="HistorySection">
+      <div id="nossa-historia" className="hidden md:flex absolute content-stretch flex-col h-[1884px] items-start left-[29px] pb-0 pt-[96px] px-0 top-[1989px] w-[1528px]" data-name="HistorySection">
         <BackgroundImage />
         <ContainerBackgroundImage1 additionalClassNames="h-[1692px]">
           <div className="h-[148px] relative shrink-0 w-full" data-name="Container">
@@ -1287,7 +1299,7 @@ export default function App() {
           </div>
         </ContainerBackgroundImage1>
       </div>
-      <div className="absolute content-stretch flex flex-col h-[2944px] items-start left-0 pb-0 pt-[96px] px-0 top-[3864px] w-[1528px]" data-name="TeachersSection" style={{ backgroundImage: "linear-gradient(112.471deg, rgb(28, 57, 142) 0%, rgb(25, 60, 184) 100%)" }}>
+      <div className="hidden md:flex absolute content-stretch flex-col h-[2944px] items-start left-0 pb-0 pt-[96px] px-0 top-[3864px] w-[1528px]" data-name="TeachersSection" style={{ backgroundImage: "linear-gradient(112.471deg, rgb(28, 57, 142) 0%, rgb(25, 60, 184) 100%)" }}>
         <div className="h-[2848px] relative shrink-0 w-full" data-name="Container">
           <div className="absolute h-[120px] left-[16px] top-0 w-[1496px]" data-name="Container">
             <div className="absolute h-[48px] left-0 top-0 w-[1496px]" data-name="Heading 2">
@@ -1530,7 +1542,7 @@ export default function App() {
           </div>
         </div>
       </div>
-      <div id="plataforma" className="absolute bg-white h-[1008.328px] left-0 top-[7559px] w-[1528px]" data-name="Platform3DSection">
+      <div id="plataforma" className="hidden md:block absolute bg-white h-[1008.328px] left-0 top-[7559px] w-[1528px]" data-name="Platform3DSection">
         <div className="absolute h-[137px] left-[16px] top-[95.78px] w-[1496px]" data-name="Container">
           <div className="absolute h-[48px] left-0 top-0 w-[1496px]" data-name="Heading 2">
             <p className="absolute font-['Arimo:Bold',sans-serif] font-bold leading-[48px] left-[517.81px] text-[#1c398e] text-[48px] text-center text-nowrap top-0 translate-x-[-50%]">Estude em</p>
@@ -1722,7 +1734,7 @@ export default function App() {
         </div>
       </div>
       {/* Seção Notas dos Alunos */}
-      <div className="absolute bg-white content-stretch flex flex-col items-start left-0 pb-[96px] pt-[96px] px-[16px] top-[6808px] w-[1528px]" data-name="StudentResultsSection">
+      <div className="hidden md:flex absolute bg-white content-stretch flex-col items-start left-0 pb-[96px] pt-[96px] px-[16px] top-[6808px] w-[1528px]" data-name="StudentResultsSection">
         <div className="content-stretch flex flex-col gap-[64px] items-center w-full relative">
           {/* Mascote Formado - Decorativo */}
           <div className="absolute right-[40px] top-[-30px] z-10 pointer-events-none animate-bounce" style={{ animationDuration: '3s' }}>
@@ -1848,7 +1860,7 @@ export default function App() {
           </div>
         </div>
       </div>
-      <div className="absolute bg-[#f9fafb] h-[560px] left-0 top-[11284px] w-[1528px]" data-name="SocialMediaSection">
+      <div className="hidden md:block absolute bg-[#f9fafb] h-[560px] left-0 top-[11284px] w-[1528px]" data-name="SocialMediaSection">
         <div className="absolute content-stretch flex flex-col gap-[16px] h-[92px] items-start left-[16px] top-[40px] w-[1496px]" data-name="Container">
           <div className="h-[48px] relative shrink-0 w-full" data-name="Heading 2">
             <p className="absolute font-['Arimo:Bold',sans-serif] font-bold leading-[48px] left-[596.5px] text-[#1c398e] text-[48px] text-center text-nowrap top-[-7.55px] translate-x-[-50%]">Siga nossas</p>
@@ -1951,7 +1963,7 @@ export default function App() {
           </div>
         </div>
       </div>
-      <div className="absolute content-stretch flex flex-col h-[1008px] items-start left-0 pb-0 pt-[96px] px-0 top-[11844px] w-[1528px]" data-name="MaterialsSection">
+      <div className="hidden md:flex absolute content-stretch flex-col h-[1008px] items-start left-0 pb-0 pt-[96px] px-0 top-[11844px] w-[1528px]" data-name="MaterialsSection">
         <BackgroundImage />
         <ContainerBackgroundImage1 additionalClassNames="h-[816px]">
           <div className="h-[92px] relative shrink-0 w-full" data-name="Container">
@@ -2332,7 +2344,9 @@ export default function App() {
         </div>
         
         {/* VERSÃO MOBILE - Hero Section */}
-        <HeroSectionMobile />
+        <Suspense fallback={<div className="block md:hidden w-full h-screen bg-gradient-to-br from-[#1c398e] to-[#193cb8]" />}>
+          <HeroSectionMobile />
+        </Suspense>
         
         {/* VERSÃO DESKTOP - Hero Section */}
         <div className="hidden md:block absolute h-[740px] left-[16px] top-[80px] w-[1496px]" data-name="Container">
@@ -2597,56 +2611,64 @@ export default function App() {
         </div>
       </div>
       
-      {/* Nova Seção Sobre Geração Mil - Mobile Only */}
-      <SobreGeracaoMil />
+      {/* Mobile Sections - Lazy Loaded for Performance */}
+      <Suspense fallback={null}>
+        {/* Nova Seção Sobre Geração Mil - Mobile Only */}
+        <SobreGeracaoMil />
+        
+        {/* Nova Seção História - Mobile Only */}
+        <HistoriaSection />
+        
+        {/* Nova Seção Resultados - Mobile Only */}
+        <ResultadosSection />
+        
+        {/* Nova Seção Contato Mobile - Mobile Only */}
+        <ContatoMobile />
+        
+        {/* Nova Seção Professores - Mobile Only */}
+        <ProfessoresSection />
+        
+        {/* Nova Seção Resultados que Inspiram - Mobile Only */}
+        <ResultadosInspiramSection />
+        
+        {/* Nova Seção Plataforma Multiplataforma - Mobile Only */}
+        <PlataformaMultiplataformaSection />
+        
+        {/* Nova Seção Aulões Presenciais - Mobile Only */}
+        <AuloesPresenciaisSection />
+        
+        {/* Nova Seção Redes Sociais - Mobile Only */}
+        <RedesSociaisSection />
+        
+        {/* Nova Seção Nosso Instagram - Mobile Only */}
+        <NossoInstagramSection />
+        
+        {/* Nova Seção Materiais Didáticos - Mobile Only */}
+        <MateriaisDidaticosSection />
+        
+        {/* Nova Seção CTA Acesso ao Conteúdo - Mobile Only */}
+        <AcessoConteudoCTASection />
+        
+        {/* Nova Seção Planos - Mobile Only */}
+        <PlanosMobile />
+        
+        {/* Nova Seção Promoção Relâmpago - Mobile Only */}
+        <PromocaoRelampagoMobile />
+        
+        {/* Seção Passo a Passo da Compra - MOBILE ONLY */}
+        <div id="passo-a-passo" className="block md:hidden">
+          <PassoAPassoCompra />
+        </div>
+        
+        {/* Nova Seção FAQ - Mobile Only */}
+        <FAQMobile />
+        
+        {/* Novo Footer - Mobile Only */}
+        <FooterMobile />
+      </Suspense>
       
-      {/* Nova Seção História - Mobile Only */}
-      <HistoriaSection />
-      
-      {/* Nova Seção Resultados - Mobile Only */}
-      <ResultadosSection />
-      
-      {/* Nova Seção Contato Mobile - Mobile Only */}
-      <ContatoMobile />
-      
-      {/* Nova Seção Professores - Mobile Only */}
-      <ProfessoresSection />
-      
-      {/* Nova Seção Resultados que Inspiram - Mobile Only */}
-      <ResultadosInspiramSection />
-      
-      {/* Nova Seção Plataforma Multiplataforma - Mobile Only */}
-      <PlataformaMultiplataformaSection />
-      
-      {/* Nova Seção Aulões Presenciais - Mobile Only */}
-      <AuloesPresenciaisSection />
-      
-      {/* Nova Seção Redes Sociais - Mobile Only */}
-      <RedesSociaisSection />
-      
-      {/* Nova Seção Nosso Instagram - Mobile Only */}
-      <NossoInstagramSection />
-      
-      {/* Nova Seção Materiais Didáticos - Mobile Only */}
-      <MateriaisDidaticosSection />
-      
-      {/* Nova Seção CTA Acesso ao Conteúdo - Mobile Only */}
-      <AcessoConteudoCTASection />
-      
-      {/* Nova Seção Planos - Mobile Only */}
-      <PlanosMobile />
-      
-      {/* Nova Seção Promoção Relâmpago - Mobile Only */}
-      <PromocaoRelampagoMobile />
-      
-      {/* Nova Seção FAQ - Mobile Only */}
-      <FAQMobile />
-      
-      {/* Novo Footer - Mobile Only */}
-      <FooterMobile />
-      
-      {/* Seção Passo a Passo da Compra */}
-      <div id="passo-a-passo" className="absolute left-0 top-[13768px] w-[1528px]" data-name="StepByStepSection">
+      {/* Seção Passo a Passo da Compra - DESKTOP ONLY */}
+      <div id="passo-a-passo-desktop" className="hidden md:block absolute left-0 top-[13768px] w-[1528px]" data-name="StepByStepSection">
         <PassoAPassoCompra />
       </div>
 
