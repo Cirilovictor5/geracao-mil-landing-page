@@ -36,12 +36,12 @@ export default function RedesSociaisSection() {
               </div>
             </div>
             
-            <p className="font-['Arimo:Regular',sans-serif] text-[14px] leading-[20px] text-[#dbeafe] mb-3">
+            <p className="font-['Arimo:Regular',sans-serif] text-[14px] leading-[20px] text-white mb-3">
               Aulas gratuitas, dicas de estudo e lives semanais com nossos professores
             </p>
             
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 mb-4">
-              <p className="font-['Arimo:Regular',sans-serif] text-[12px] leading-[16px] text-[#dbeafe] mb-1">
+              <p className="font-['Arimo:Regular',sans-serif] text-[12px] leading-[16px] text-white/80 mb-1">
                 📹 Último vídeo:
               </p>
               <p className="font-['Arimo:Bold',sans-serif] font-bold text-[14px] leading-[18px] text-white">
@@ -79,12 +79,12 @@ export default function RedesSociaisSection() {
               </div>
             </div>
             
-            <p className="font-['Arimo:Regular',sans-serif] text-[14px] leading-[20px] text-[#dbeafe] mb-3">
+            <p className="font-['Arimo:Regular',sans-serif] text-[14px] leading-[20px] text-white mb-3">
               Dicas diárias, histórias de aprovação e bastidores das aulas
             </p>
             
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 mb-4">
-              <p className="font-['Arimo:Regular',sans-serif] text-[12px] leading-[16px] text-[#dbeafe] mb-1">
+              <p className="font-['Arimo:Regular',sans-serif] text-[12px] leading-[16px] text-white/80 mb-1">
                 ✨ Novidade:
               </p>
               <p className="font-['Arimo:Bold',sans-serif] font-bold text-[14px] leading-[18px] text-white">
@@ -123,12 +123,12 @@ export default function RedesSociaisSection() {
               </div>
             </div>
             
-            <p className="font-['Arimo:Regular',sans-serif] text-[14px] leading-[20px] text-[#dbeafe] mb-3">
+            <p className="font-['Arimo:Regular',sans-serif] text-[14px] leading-[20px] text-white mb-3">
               Conversas inspiradoras com aprovados e especialistas em educação
             </p>
             
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 mb-4">
-              <p className="font-['Arimo:Regular',sans-serif] text-[12px] leading-[16px] text-[#dbeafe] mb-1">
+              <p className="font-['Arimo:Regular',sans-serif] text-[12px] leading-[16px] text-white/80 mb-1">
                 🎧 Destaque:
               </p>
               <p className="font-['Arimo:Bold',sans-serif] font-bold text-[14px] leading-[18px] text-white">

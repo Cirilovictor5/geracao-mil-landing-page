@@ -39,7 +39,7 @@ export default function MateriaisDidaticosSection() {
                 <h3 className="font-['Arimo:Bold',sans-serif] font-bold text-[20px] leading-[26px] text-white mb-1">
                   Apostilas
                 </h3>
-                <p className="font-['Arimo:Regular',sans-serif] text-[13px] leading-[18px] text-[#dbeafe]">
+                <p className="font-['Arimo:Regular',sans-serif] text-[13px] leading-[18px] text-white">
                   Material completo com teoria e exercícios
                 </p>
                 <p className="font-['Arimo:Regular',sans-serif] text-[11px] leading-[15px] text-[#fdc700] mt-1">
@@ -71,7 +71,7 @@ export default function MateriaisDidaticosSection() {
                 <h3 className="font-['Arimo:Bold',sans-serif] font-bold text-[20px] leading-[26px] text-white mb-1">
                   Videoaulas Gravadas
                 </h3>
-                <p className="font-['Arimo:Regular',sans-serif] text-[13px] leading-[18px] text-[#dbeafe]">
+                <p className="font-['Arimo:Regular',sans-serif] text-[13px] leading-[18px] text-white">
                   Mais de 250 aulas em alta definição (5 a 10 por disciplina)
                 </p>
                 <p className="font-['Arimo:Regular',sans-serif] text-[11px] leading-[15px] text-[#fdc700] mt-1">
@@ -109,7 +109,7 @@ export default function MateriaisDidaticosSection() {
                 <h3 className="font-['Arimo:Bold',sans-serif] font-bold text-[20px] leading-[26px] text-white mb-1">
                   Simulados
                 </h3>
-                <p className="font-['Arimo:Regular',sans-serif] text-[13px] leading-[18px] text-[#dbeafe]">
+                <p className="font-['Arimo:Regular',sans-serif] text-[13px] leading-[18px] text-white">
                   Provas completas estilo ENEM
                 </p>
               </div>
@@ -138,7 +138,7 @@ export default function MateriaisDidaticosSection() {
                 <h3 className="font-['Arimo:Bold',sans-serif] font-bold text-[20px] leading-[26px] text-white mb-1">
                   Exercícios
                 </h3>
-                <p className="font-['Arimo:Regular',sans-serif] text-[13px] leading-[18px] text-[#dbeafe]">
+                <p className="font-['Arimo:Regular',sans-serif] text-[13px] leading-[18px] text-white">
                   Listas com gabarito comentado
                 </p>
                 <p className="font-['Arimo:Regular',sans-serif] text-[11px] leading-[15px] text-[#fdc700] mt-1">

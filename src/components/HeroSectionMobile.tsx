@@ -98,7 +98,7 @@ export default function HeroSectionMobile() {
                 <path d="M20 6L9 17L4 12" stroke="#fdc700" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </div>
-            <p className="font-['Arimo:Regular',sans-serif] text-[#4a5565] text-[14px] leading-[20px]">
+            <p className="font-['Arimo:Regular',sans-serif] text-[#1c398e] text-[14px] leading-[20px]">
               Acesso completo à plataforma de estudos
             </p>
           </div>
@@ -108,7 +108,7 @@ export default function HeroSectionMobile() {
                 <path d="M20 6L9 17L4 12" stroke="#fdc700" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </div>
-            <p className="font-['Arimo:Regular',sans-serif] text-[#4a5565] text-[14px] leading-[20px]">
+            <p className="font-['Arimo:Regular',sans-serif] text-[#1c398e] text-[14px] leading-[20px]">
               Professores especializados e experientes
             </p>
           </div>
@@ -118,7 +118,7 @@ export default function HeroSectionMobile() {
                 <path d="M20 6L9 17L4 12" stroke="#fdc700" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </div>
-            <p className="font-['Arimo:Regular',sans-serif] text-[#4a5565] text-[14px] leading-[20px]">
+            <p className="font-['Arimo:Regular',sans-serif] text-[#1c398e] text-[14px] leading-[20px]">
               Material didático completo e atualizado
             </p>
           </div>
@@ -128,7 +128,7 @@ export default function HeroSectionMobile() {
                 <path d="M20 6L9 17L4 12" stroke="#fdc700" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </div>
-            <p className="font-['Arimo:Regular',sans-serif] text-[#4a5565] text-[14px] leading-[20px]">
+            <p className="font-['Arimo:Regular',sans-serif] text-[#1c398e] text-[14px] leading-[20px]">
               Suporte e acompanhamento personalizado
             </p>
           </div>
