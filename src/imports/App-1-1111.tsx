@@ -1,7 +1,27 @@
 import svgPaths from "./svg-f0kqj1s2ab";
 import clsx from "clsx";
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
 import PassoAPassoCompra from "../components/PassoAPassoCompra";
+
+// Lazy load mobile components for better performance
+const SobreGeracaoMil = lazy(() => import("../components/SobreGeracaoMil"));
+const HistoriaSection = lazy(() => import("../components/HistoriaSection"));
+const ResultadosSection = lazy(() => import("../components/ResultadosSection"));
+const ContatoMobile = lazy(() => import("../components/ContatoMobile"));
+const ProfessoresSection = lazy(() => import("../components/ProfessoresSection"));
+const ResultadosInspiramSection = lazy(() => import("../components/ResultadosInspiramSection"));
+const PlataformaMultiplataformaSection = lazy(() => import("../components/PlataformaMultiplataformaSection"));
+const AuloesPresenciaisSection = lazy(() => import("../components/AuloesPresenciaisSection"));
+const RedesSociaisSection = lazy(() => import("../components/RedesSociaisSection"));
+const MateriaisDidaticosSection = lazy(() => import("../components/MateriaisDidaticosSection"));
+const AcessoConteudoCTASection = lazy(() => import("../components/AcessoConteudoCTASection"));
+const NossoInstagramSection = lazy(() => import("../components/NossoInstagramSection"));
+const PlanosMobile = lazy(() => import("../components/PlanosMobile"));
+const FAQMobile = lazy(() => import("../components/FAQMobile"));
+const FooterMobile = lazy(() => import("../components/FooterMobile"));
+const HeroSectionMobile = lazy(() => import("../components/HeroSectionMobile"));
+import SEOHead from "../components/SEOHead";
+import PerformanceOptimizer from "../components/PerformanceOptimizer";
 import imgLogoGM from "figma:asset/33c9dc2c2bc6e55ff3118c010ec4eb5ef9214584.png";
 import imgLogoGMCircle from "figma:asset/3e7c0272f627242dfee1957a778a14ba510182a9.png";
 import imgLogoGMCirculoAmarelo from "figma:asset/f06bca7207cccce23014b3b9d9f7c8e104aaf95f.png";
@@ -854,7 +874,7 @@ function BackgroundImageAndText1({ text, additionalClassNames = "" }: Background
 
 function BackgroundImage() {
   return (
-    <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
+    <div aria-hidden="true" className="absolute inset-0 pointer-events-none hidden md:block">
       <div className="absolute bg-white inset-0" />
       <img alt="" className="absolute max-w-none object-50%-50% object-cover size-full" src={imgHistorySection} />
     </div>
@@ -977,39 +997,52 @@ function FAQItem({ question, answer, defaultOpen = false }: FAQItemProps) {
 
 export default function App() {
   return (
-    <div className="bg-white relative size-full" data-name="App">
+    <div className="bg-white relative w-full min-h-screen" data-name="App">
+      {/* SEO & Performance Optimization */}
+      <SEOHead />
+      <PerformanceOptimizer />
+      
       {/* Header Navigation */}
-      <header className="fixed top-0 left-0 right-0 bg-white shadow-md z-50 h-[80px]" data-name="Header">
-        <div className="w-[1528px] mx-auto px-[16px] h-full flex items-center justify-between">
+      <header className="fixed top-0 left-0 right-0 bg-white shadow-md z-50 h-[64px] md:h-[80px]" data-name="Header">
+        <div className="max-w-[1528px] mx-auto px-[16px] md:px-[32px] lg:px-[48px] h-full flex items-center justify-between">
           {/* Logo / Brand */}
-          <div className="flex flex-col gap-[4px]">
-            <h1 className="font-['Arimo:Bold',sans-serif] font-bold text-[28px] text-[#1c398e] leading-tight">Geração MIL</h1>
-            <p className="font-['Arimo:Regular',sans-serif] text-[14px] text-[#4a5565] leading-tight">Curso Pré-Vestibular</p>
+          <div className="flex items-center gap-3">
+            <img 
+              src={imgLogoGMNovo} 
+              alt="Geração MIL - Logo" 
+              className="w-10 h-10 md:w-12 md:h-12 object-contain"
+              loading="eager"
+              fetchpriority="high"
+            />
+            <div className="flex flex-col gap-[2px] md:gap-[4px]">
+              <h1 className="font-['Arimo:Bold',sans-serif] font-bold text-[20px] md:text-[24px] lg:text-[28px] text-[#1c398e] leading-tight">Geração MIL</h1>
+              <p className="font-['Arimo:Regular',sans-serif] text-[11px] md:text-[12px] lg:text-[14px] text-[#4a5565] leading-tight">Curso Pré-Vestibular</p>
+            </div>
           </div>
           
-          {/* Navigation Menu */}
-          <nav className="flex items-center gap-[40px]">
+          {/* Navigation Menu - Desktop Only */}
+          <nav className="hidden lg:flex items-center gap-[24px] xl:gap-[40px]">
             <a 
               href="#nossa-historia" 
-              className="font-['Arimo:Regular',sans-serif] text-[16px] text-[#4a5565] hover:text-[#1c398e] transition-colors cursor-pointer"
+              className="font-['Arimo:Regular',sans-serif] text-[14px] xl:text-[16px] text-[#4a5565] hover:text-[#1c398e] transition-colors cursor-pointer"
             >
               Nossa História
             </a>
             <a 
               href="#plataforma" 
-              className="font-['Arimo:Regular',sans-serif] text-[16px] text-[#4a5565] hover:text-[#1c398e] transition-colors cursor-pointer"
+              className="font-['Arimo:Regular',sans-serif] text-[14px] xl:text-[16px] text-[#4a5565] hover:text-[#1c398e] transition-colors cursor-pointer"
             >
               Plataforma
             </a>
             <a 
               href="#faq" 
-              className="font-['Arimo:Regular',sans-serif] text-[16px] text-[#4a5565] hover:text-[#1c398e] transition-colors cursor-pointer"
+              className="font-['Arimo:Regular',sans-serif] text-[14px] xl:text-[16px] text-[#4a5565] hover:text-[#1c398e] transition-colors cursor-pointer"
             >
               FAQ
             </a>
             <a 
               href="#planos" 
-              className="font-['Arimo:Regular',sans-serif] text-[16px] text-[#4a5565] hover:text-[#1c398e] transition-colors cursor-pointer"
+              className="font-['Arimo:Regular',sans-serif] text-[14px] xl:text-[16px] text-[#4a5565] hover:text-[#1c398e] transition-colors cursor-pointer"
             >
               Planos
             </a>
@@ -1019,15 +1052,25 @@ export default function App() {
               data-track="click-navigation"
               data-section="header"
               data-destination="passo-a-passo"
-              className="font-['Arimo:Bold',sans-serif] font-bold text-[16px] text-white bg-[#1c398e] hover:bg-[#193cb8] px-[24px] py-[12px] rounded-[8px] transition-colors cursor-pointer"
+              className="font-['Arimo:Bold',sans-serif] font-bold text-[14px] xl:text-[16px] text-white bg-[#1c398e] hover:bg-[#193cb8] px-[16px] xl:px-[24px] py-[10px] xl:py-[12px] rounded-[8px] transition-colors cursor-pointer active:scale-95 will-change-transform"
+              aria-label="Inscreva-se no curso"
             >
               Inscreva-se
             </a>
           </nav>
+
+          {/* Mobile CTA Button */}
+          <a 
+            href="#passo-a-passo"
+            className="lg:hidden font-['Arimo:Bold',sans-serif] font-bold text-[12px] md:text-[14px] text-white bg-[#1c398e] hover:bg-[#193cb8] px-[12px] md:px-[16px] py-[8px] md:py-[10px] rounded-[6px] md:rounded-[8px] transition-colors cursor-pointer active:scale-95"
+            aria-label="Inscreva-se no curso"
+          >
+            Inscreva-se
+          </a>
         </div>
       </header>
 
-      <div className="absolute content-stretch flex flex-col h-[1000px] items-start left-0 pb-0 pt-[96px] px-0 top-[980px] w-[1528px]" data-name="VideoSection" style={{ backgroundImage: "linear-gradient(146.797deg, rgb(28, 57, 142) 0%, rgb(25, 60, 184) 100%)" }}>
+      <div className="hidden md:flex absolute content-stretch flex-col h-[1000px] items-start left-0 pb-0 pt-[96px] px-0 top-[980px] w-[1528px]" data-name="VideoSection" style={{ backgroundImage: "linear-gradient(146.797deg, rgb(28, 57, 142) 0%, rgb(25, 60, 184) 100%)" }}>
         <div className="h-[808px] relative shrink-0 w-full" data-name="Container">
           <div className="absolute h-[92px] left-[16px] top-0 w-[1496px]" data-name="Container">
             <div className="absolute h-[48px] left-0 top-0 w-[1496px]" data-name="Heading 2">
@@ -1065,7 +1108,7 @@ export default function App() {
           </div>
         </div>
       </div>
-      <div id="nossa-historia" className="absolute content-stretch flex flex-col h-[1884px] items-start left-[29px] pb-0 pt-[96px] px-0 top-[1989px] w-[1528px]" data-name="HistorySection">
+      <div id="nossa-historia" className="hidden md:flex absolute content-stretch flex-col h-[1884px] items-start left-[29px] pb-0 pt-[96px] px-0 top-[1989px] w-[1528px]" data-name="HistorySection">
         <BackgroundImage />
         <ContainerBackgroundImage1 additionalClassNames="h-[1692px]">
           <div className="h-[148px] relative shrink-0 w-full" data-name="Container">
@@ -1212,7 +1255,7 @@ export default function App() {
                     </BackgroundImage11>
                     <TextBackgroundImageAndText2 text="YouTube" additionalClassNames="w-[56.234px]" />
                   </a>
-                  <a href="https://open.spotify.com/intl-pt/artist/3tqHb3Dv7IIfIyDwZdqz9c?si=hW4Mo8DQTX-NiZxmE6JXUg" target="_blank" rel="noopener noreferrer" className="absolute bg-white content-stretch flex flex-col gap-[12px] h-[128px] items-center left-[711.98px] px-0 py-[16px] rounded-[14px] top-0 w-[213.344px] transition-transform hover:scale-105 cursor-pointer" data-name="Link">
+                  <a href="https://open.spotify.com/album/6tDPZRszIb4GI4uWKGFOhk?si=bjU40VktTymZKrTPBH0ucA" target="_blank" rel="noopener noreferrer" className="absolute bg-white content-stretch flex flex-col gap-[12px] h-[128px] items-center left-[711.98px] px-0 py-[16px] rounded-[14px] top-0 w-[213.344px] transition-transform hover:scale-105 cursor-pointer" data-name="Link">
                     <BackgroundImage11 additionalClassNames="bg-[#00a63e]">
                       <IconBackgroundImage3>
                         <path d={svgPaths.p2ffb3f80} id="Vector" stroke="var(--stroke-0, white)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.66667" />
@@ -1255,7 +1298,7 @@ export default function App() {
           </div>
         </ContainerBackgroundImage1>
       </div>
-      <div className="absolute content-stretch flex flex-col h-[2944px] items-start left-0 pb-0 pt-[96px] px-0 top-[3864px] w-[1528px]" data-name="TeachersSection" style={{ backgroundImage: "linear-gradient(112.471deg, rgb(28, 57, 142) 0%, rgb(25, 60, 184) 100%)" }}>
+      <div className="hidden md:flex absolute content-stretch flex-col h-[2944px] items-start left-0 pb-0 pt-[96px] px-0 top-[3864px] w-[1528px]" data-name="TeachersSection" style={{ backgroundImage: "linear-gradient(112.471deg, rgb(28, 57, 142) 0%, rgb(25, 60, 184) 100%)" }}>
         <div className="h-[2848px] relative shrink-0 w-full" data-name="Container">
           <div className="absolute h-[120px] left-[16px] top-0 w-[1496px]" data-name="Container">
             <div className="absolute h-[48px] left-0 top-0 w-[1496px]" data-name="Heading 2">
@@ -1498,7 +1541,7 @@ export default function App() {
           </div>
         </div>
       </div>
-      <div id="plataforma" className="absolute bg-white h-[1008.328px] left-0 top-[7559px] w-[1528px]" data-name="Platform3DSection">
+      <div id="plataforma" className="hidden md:block absolute bg-white h-[1008.328px] left-0 top-[7559px] w-[1528px]" data-name="Platform3DSection">
         <div className="absolute h-[137px] left-[16px] top-[95.78px] w-[1496px]" data-name="Container">
           <div className="absolute h-[48px] left-0 top-0 w-[1496px]" data-name="Heading 2">
             <p className="absolute font-['Arimo:Bold',sans-serif] font-bold leading-[48px] left-[517.81px] text-[#1c398e] text-[48px] text-center text-nowrap top-0 translate-x-[-50%]">Estude em</p>
@@ -1551,7 +1594,7 @@ export default function App() {
           </div>
         </div>
       </div>
-      <div className="absolute content-stretch flex flex-col h-[1496px] items-start left-0 pb-0 pt-[96px] px-0 top-[9788px] w-[1528px]" data-name="SocialProofSection" style={{ backgroundImage: "linear-gradient(139.696deg, rgb(28, 57, 142) 0%, rgb(25, 60, 184) 100%)" }}>
+      <div className="hidden md:flex absolute content-stretch flex-col h-[1496px] items-start left-0 pb-0 pt-[96px] px-0 top-[9788px] w-[1528px]" data-name="SocialProofSection" style={{ backgroundImage: "linear-gradient(139.696deg, rgb(28, 57, 142) 0%, rgb(25, 60, 184) 100%)" }}>
         <div className="h-[1304px] relative shrink-0 w-full" data-name="Container">
           <div className="absolute h-[176px] left-[16px] top-0 w-[1496px]" data-name="Container">
             <div className="absolute bg-[#fdc700] h-[40px] left-[606.97px] rounded-[3.35544e+07px] top-0 w-[282.063px]" data-name="Container">
@@ -1690,7 +1733,7 @@ export default function App() {
         </div>
       </div>
       {/* Seção Notas dos Alunos */}
-      <div className="absolute bg-white content-stretch flex flex-col items-start left-0 pb-[96px] pt-[96px] px-[16px] top-[6808px] w-[1528px]" data-name="StudentResultsSection">
+      <div className="hidden md:flex absolute bg-white content-stretch flex-col items-start left-0 pb-[96px] pt-[96px] px-[16px] top-[6808px] w-[1528px]" data-name="StudentResultsSection">
         <div className="content-stretch flex flex-col gap-[64px] items-center w-full relative">
           {/* Mascote Formado - Decorativo */}
           <div className="absolute right-[40px] top-[-30px] z-10 pointer-events-none animate-bounce" style={{ animationDuration: '3s' }}>
@@ -1712,8 +1755,8 @@ export default function App() {
             </p>
           </div>
 
-          {/* Grid de Cards de Alunos */}
-          <div className="grid grid-cols-3 gap-[24px] w-full max-w-[1200px]">
+          {/* Grid de Cards de Alunos - Responsivo */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[16px] md:gap-[20px] lg:gap-[24px] w-full max-w-[1200px] px-[16px] md:px-[24px] lg:px-0">
             {/* Card Jeane Vitória */}
             <div className="bg-white rounded-[12px] shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.1),0px_4px_6px_-4px_rgba(0,0,0,0.1)] overflow-hidden transition-transform hover:scale-105 cursor-pointer">
               <img 
@@ -1816,7 +1859,7 @@ export default function App() {
           </div>
         </div>
       </div>
-      <div className="absolute bg-[#f9fafb] h-[560px] left-0 top-[11284px] w-[1528px]" data-name="SocialMediaSection">
+      <div className="hidden md:block absolute bg-[#f9fafb] h-[560px] left-0 top-[11284px] w-[1528px]" data-name="SocialMediaSection">
         <div className="absolute content-stretch flex flex-col gap-[16px] h-[92px] items-start left-[16px] top-[40px] w-[1496px]" data-name="Container">
           <div className="h-[48px] relative shrink-0 w-full" data-name="Heading 2">
             <p className="absolute font-['Arimo:Bold',sans-serif] font-bold leading-[48px] left-[596.5px] text-[#1c398e] text-[48px] text-center text-nowrap top-[-7.55px] translate-x-[-50%]">Siga nossas</p>
@@ -1919,7 +1962,7 @@ export default function App() {
           </div>
         </div>
       </div>
-      <div className="absolute content-stretch flex flex-col h-[1008px] items-start left-0 pb-0 pt-[96px] px-0 top-[11844px] w-[1528px]" data-name="MaterialsSection">
+      <div className="hidden md:flex absolute content-stretch flex-col h-[1008px] items-start left-0 pb-0 pt-[96px] px-0 top-[11844px] w-[1528px]" data-name="MaterialsSection">
         <BackgroundImage />
         <ContainerBackgroundImage1 additionalClassNames="h-[816px]">
           <div className="h-[92px] relative shrink-0 w-full" data-name="Container">
@@ -1950,9 +1993,9 @@ export default function App() {
                   <path d={svgPaths.p3b915500} id="Vector_2" stroke="var(--stroke-0, #FDC700)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="5.33333" />
                 </IconBackgroundImage5>
               </div>
-              <BackgroundImageAndText1 text="Videoaulas" additionalClassNames="left-[24px] top-[232px] w-[308px]" />
-              <ParagraphBackgroundImageAndText7 text="Mais de 500 aulas em alta definição" />
-              <ContainerBackgroundImageAndText1 text="+500 AULAS" />
+              <BackgroundImageAndText1 text="Videoaulas Gravadas" additionalClassNames="left-[24px] top-[232px] w-[308px]" />
+              <ParagraphBackgroundImageAndText7 text="Mais de 250 aulas em alta definição (5 a 10 por disciplina)" />
+              <ContainerBackgroundImageAndText1 text="+250 AULAS" />
             </ContainerBackgroundImage7>
             <ContainerBackgroundImage7 additionalClassNames="[grid-area:1_/_3]">
               <div className="absolute bg-[#1c398e] content-stretch flex h-[192px] items-center justify-center left-[24px] rounded-[10px] top-[24px] w-[308px]" data-name="Container">
@@ -1976,8 +2019,8 @@ export default function App() {
                 </IconBackgroundImage5>
               </div>
               <BackgroundImageAndText1 text="Exercícios" additionalClassNames="left-[24px] top-[232px] w-[308px]" />
-              <ParagraphBackgroundImageAndText7 text="Listas com gabarito comentado" />
-              <ContainerBackgroundImageAndText1 text="+1000 QUESTÕES" />
+              <ParagraphBackgroundImageAndText7 text="Listas com gabarito • Liberadas gradualmente" />
+              <ContainerBackgroundImageAndText1 text="+400 QUESTÕES" />
             </ContainerBackgroundImage7>
           </div>
           <div className="bg-gradient-to-r from-[#1c398e] h-[264px] relative rounded-[16px] shrink-0 to-[#193cb8] w-full" data-name="Container">
@@ -2087,7 +2130,7 @@ export default function App() {
           </a>
         </div>
       </div>
-      <div id="faq" className="absolute content-stretch flex flex-col h-[1136px] items-start left-0 pb-0 pt-[96px] px-[380px] top-[17554px] w-[1528px]" data-name="FAQSection">
+      <div id="faq-desktop" className="hidden md:flex absolute content-stretch flex-col h-[1136px] items-start left-0 pb-0 pt-[96px] px-[380px] top-[17554px] w-[1528px] overflow-hidden" data-name="FAQSection">
         <BackgroundImage />
         <div className="content-stretch flex flex-col gap-[48px] h-[944px] items-start relative shrink-0 w-full" data-name="Container">
           <div className="h-[144px] relative shrink-0 w-full" data-name="Container">
@@ -2130,7 +2173,7 @@ export default function App() {
             />
             <FAQItem 
               question="Quando terei acesso ao conteúdo após a compra?"
-              answer="Após concluir sua compra, você terá acesso imediato à plataforma para criar seu cadastro. Dentro de até 48 horas após o cadastro, você será automaticamente inscrito nas disciplinas do seu plano e terá acesso completo a todas as videoaulas, materiais em PDF, simulados e demais recursos disponíveis."
+              answer="Após concluir sua compra, você terá acesso imediato à plataforma para criar seu cadastro. Dentro de até 48 horas após a confirmação do pagamento e realização da matrícula, você terá acesso aos slides, apostilas em PDF, simulados e cronogramas. As videoaulas gravadas (mais de 250 aulas, sendo 5 a 10 por disciplina) são disponibilizadas progressivamente: primeiras aulas imediatamente, depois 5 a 10 aulas/mês a partir de fevereiro. As aulas ao vivo começam em fevereiro de 2025."
             />
           </div>
           <div className="h-[96px] relative shrink-0 w-full" data-name="Container">
@@ -2149,7 +2192,7 @@ export default function App() {
           </div>
         </div>
       </div>
-      <div className="absolute bg-[#1c398e] content-stretch flex flex-col gap-[48px] h-[277px] items-start left-0 px-[16px] py-0 top-[18831px] w-[1528px]" data-name="Footer">
+      <div className="hidden md:flex absolute bg-[#1c398e] content-stretch flex-col gap-[48px] h-[277px] items-start left-0 px-[16px] py-0 top-[18831px] w-[1528px]" data-name="Footer">
         <div className="gap-[32px] grid grid-cols-[repeat(4,_minmax(0px,_1fr))] grid-rows-[repeat(1,_minmax(0px,_1fr))] h-[176px] relative shrink-0 w-full" data-name="Container">
           <div className="[grid-area:1_/_1] content-stretch flex flex-col gap-[16px] items-start place-self-stretch relative shrink-0" data-name="Container">
             <div className="content-stretch flex h-[32px] items-start relative shrink-0 w-full" data-name="Heading 3">
@@ -2282,15 +2325,15 @@ export default function App() {
           </div>
         </div>
       </div>
-      <div id="inscreva-se" className="absolute h-[900px] left-0 overflow-clip top-[80px] w-[1528px]" data-name="HeroSection" style={{ backgroundImage: "linear-gradient(153.585deg, rgb(28, 57, 142) 0%, rgb(25, 60, 184) 50%, rgb(28, 57, 142) 100%)" }}>
-        <div className="absolute h-[900px] left-0 opacity-20 top-0 w-[1528px]" data-name="Container">
+      <div id="inscreva-se" className="absolute min-h-[900px] left-0 overflow-clip top-[64px] md:top-[80px] w-full md:w-[1528px]" data-name="HeroSection" style={{ backgroundImage: "linear-gradient(153.585deg, rgb(28, 57, 142) 0%, rgb(25, 60, 184) 50%, rgb(28, 57, 142) 100%)" }}>
+        <div className="absolute h-full left-0 opacity-20 top-0 w-full" data-name="Container">
           <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={imgContainer} />
         </div>
-        <div className="absolute bg-[#fdc700] blur-3xl filter left-[-128px] opacity-20 rounded-[3.35544e+07px] size-[256px] top-[-128px]" data-name="Container" />
-        <div className="absolute bg-[#155dfc] blur-3xl filter left-[1336px] opacity-20 rounded-[3.35544e+07px] size-[384px] top-[567px]" data-name="Container" />
+        <div className="hidden md:block absolute bg-[#fdc700] blur-3xl filter left-[-128px] opacity-20 rounded-[3.35544e+07px] size-[256px] top-[-128px]" data-name="Container" />
+        <div className="hidden md:block absolute bg-[#155dfc] blur-3xl filter left-[1336px] opacity-20 rounded-[3.35544e+07px] size-[384px] top-[567px]" data-name="Container" />
         
-        {/* Mascote com Caneta - Hero Decorativo */}
-        <div className="absolute left-[60px] bottom-[40px] z-10 pointer-events-none" style={{ animation: 'float 4s ease-in-out infinite' }}>
+        {/* Mascote com Caneta - Hero Decorativo - Desktop Only */}
+        <div className="hidden md:block absolute left-[60px] bottom-[40px] z-10 pointer-events-none" style={{ animation: 'float 4s ease-in-out infinite' }}>
           <img 
             src={imgMascoteCaneta} 
             alt="Mascote Geração MIL" 
@@ -2298,23 +2341,32 @@ export default function App() {
             style={{ backgroundColor: 'transparent', mixBlendMode: 'normal' }}
           />
         </div>
-        <div className="absolute h-[740px] left-[16px] top-[80px] w-[1496px]" data-name="Container">
+        
+        {/* VERSÃO MOBILE - Hero Section */}
+        <Suspense fallback={<div className="block md:hidden w-full h-screen bg-gradient-to-br from-[#1c398e] to-[#193cb8]" />}>
+          <HeroSectionMobile />
+        </Suspense>
+        
+        {/* VERSÃO DESKTOP - Hero Section */}
+        <div className="hidden md:block absolute h-[740px] left-[16px] top-[80px] w-[1496px]" data-name="Container">
           <div className="absolute h-[290px] left-0 top-[225px] w-[732px]" data-name="Container">
-            <div className="absolute bg-[#fdc700] content-stretch flex h-[36px] items-start left-0 px-[16px] py-[8px] rounded-[3.35544e+07px] top-0 w-[181.031px]" data-name="Container">
-              <p className="font-['Arimo:Bold',sans-serif] font-bold leading-[20px] relative shrink-0 text-[#1c398e] text-[14px] text-nowrap">O MELHOR DO BRASIL</p>
+            <div className="absolute bg-[#fdc700] content-stretch flex h-[28px] items-center justify-center left-0 px-[10px] py-[5px] rounded-[3.35544e+07px] top-0 w-[150px] z-10" data-name="Container">
+              <p className="font-['Arimo:Bold',sans-serif] font-bold leading-[16px] relative shrink-0 text-[#1c398e] text-[8px] text-nowrap">O MELHOR DO BRASIL</p>
             </div>
             <div className="absolute h-[150px] left-0 top-[60px] w-[732px]" data-name="Heading 2">
               <p className="absolute font-['Arimo:Bold',sans-serif] font-bold leading-[75px] left-0 text-[60px] text-nowrap text-white top-0">O curso pré-vestibular</p>
               <div className="absolute content-stretch flex h-[75px] items-center left-0 top-[75px] w-[732px]" data-name="Text">
                 <p className="font-['Arimo:Bold',sans-serif] font-bold leading-[75px] relative shrink-0 text-[#fdc700] text-[60px] text-nowrap">mais completo</p>
-                <p className="font-['Arimo:Bold',sans-serif] font-bold leading-[75px] relative shrink-0 text-[60px] text-nowrap text-white ml-[12px]">do Brasil</p>
+                <p className="font-['Arimo:Bold',sans-serif] font-bold leading-[75px] relative shrink-0 text-[60px] text-white ml-[12px]">do Brasil</p>
               </div>
             </div>
             <div className="absolute h-[56px] left-0 top-[234px] w-[732px]" data-name="Paragraph">
               <p className="absolute font-['Arimo:Regular',sans-serif] font-normal leading-[28px] left-0 text-[#dbeafe] text-[20px] text-justify top-0 w-[731px]">Prepare-se para o ENEM e principais vestibulares com o melhor método de ensino, professores especializados e plataforma completa de estudos.</p>
             </div>
           </div>
-          <div id="formulario" className="absolute bg-[rgba(255,255,255,0.95)] content-stretch flex flex-col gap-[24px] h-[740px] items-center justify-center left-[764px] pb-[40px] pt-[40px] px-[48px] rounded-[16px] shadow-[0px_25px_50px_-12px_rgba(0,0,0,0.25)] top-0 w-[732px]" data-name="Container">
+          
+          {/* FORMULÁRIO DESKTOP */}
+          <div id="formulario" className="hidden md:flex absolute bg-[rgba(255,255,255,0.95)] content-stretch flex-col gap-[24px] h-[740px] items-center justify-center left-[764px] pb-[40px] pt-[40px] px-[48px] rounded-[16px] shadow-[0px_25px_50px_-12px_rgba(0,0,0,0.25)] top-0 w-[732px]" data-name="Container">
             {/* Logo GM Oficial com Círculo Amarelo */}
             <div className="relative flex items-center justify-center w-[160px] h-[160px]">
               {/* Círculo amarelo como botão */}
@@ -2391,13 +2443,13 @@ export default function App() {
                 <div className="flex items-start gap-[8px]">
                   <span className="text-[20px] flex-shrink-0">⚡</span>
                   <p className="font-['Arimo:Regular',sans-serif] font-normal leading-[22px] text-[#4a5565] text-[14px]">
-                    Videoaulas, slides e apostilas têm <strong className="font-['Arimo:Bold',sans-serif] text-[#1c398e]">acesso imediato</strong>, liberados conforme os meses iniciam
+                    <strong className="font-['Arimo:Bold',sans-serif] text-[#1c398e]">+250 videoaulas gravadas</strong> (5 a 10 por disciplina) disponibilizadas progressivamente. Slides e apostilas têm acesso em até 48h
                   </p>
                 </div>
                 <div className="flex items-start gap-[8px]">
                   <span className="text-[20px] flex-shrink-0">📚</span>
                   <p className="font-['Arimo:Regular',sans-serif] font-normal leading-[22px] text-[#4a5565] text-[14px]">
-                    <strong className="font-['Arimo:Bold',sans-serif] text-[#1c398e]">Acesso completo a todos os cronogramas</strong> desde o primeiro dia
+                    <strong className="font-['Arimo:Bold',sans-serif] text-[#1c398e]">Acesso completo a todos os cronogramas</strong> desde a confirmação do pagamento e inscrição em curso, após 48h
                   </p>
                 </div>
               </div>
@@ -2405,28 +2457,28 @@ export default function App() {
 
             {/* Botão de CTA */}
             <a 
-              href="#planos"
+              href="#promocao-relampago"
               id="btn-inscricao-formulario"
               data-track="click-navigation"
               data-section="formulario-inscricao"
               data-action="garantir-vaga"
-              data-destination="planos"
-              className="bg-[#fdc700] h-[64px] w-full rounded-[10px] shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.1),0px_4px_6px_-4px_rgba(0,0,0,0.1)] cursor-pointer hover:bg-[#e6b600] hover:scale-105 transition-all flex items-center justify-center" 
+              data-destination="promocao-relampago"
+              className="bg-[#fdc700] h-[52px] w-full rounded-[10px] shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.1),0px_4px_6px_-4px_rgba(0,0,0,0.1)] cursor-pointer hover:bg-[#e6b600] hover:scale-105 transition-all flex items-center justify-center mt-[16px]" 
               data-name="Button"
             >
-              <p className="font-['Arimo:Bold',sans-serif] font-bold leading-[24px] text-[#1c398e] text-[18px] text-center text-nowrap">
+              <p className="font-['Arimo:Bold',sans-serif] font-bold leading-[20px] text-[#1c398e] text-[16px] text-center text-nowrap">
                 🎓 GARANTIR MINHA VAGA AGORA
               </p>
             </a>
 
             {/* Texto Legal */}
             <p className="font-['Arimo:Regular',sans-serif] font-normal leading-[16px] text-[#6a7282] text-[12px] text-center w-full">
-              Role até os planos e escolha o melhor para você
+              Conheça nossa promoção especial
             </p>
           </div>
         </div>
       </div>
-      <div className="absolute content-stretch flex flex-col h-[1272px] items-start left-0 pb-0 pt-[96px] px-0 top-[9266.55px] w-[1528px]" data-name="PlatformSection">
+      <div className="hidden md:flex absolute content-stretch flex-col h-[1272px] items-start left-0 pb-0 pt-[96px] px-0 top-[9266.55px] w-[1528px]" data-name="PlatformSection">
         <BackgroundImage1 />
         <div className="h-[1032px] relative shrink-0 w-full" data-name="Container">
           <div className="absolute h-[120px] left-[16px] top-0 w-[1496px]" data-name="Container">
@@ -2456,14 +2508,14 @@ export default function App() {
                         <path d={svgPaths.p1f6ff800} id="Vector_3" stroke="var(--stroke-0, #1C398E)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.66667" />
                         <path d="M2.5 8.33301H17.5" id="Vector_4" stroke="var(--stroke-0, #1C398E)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.66667" />
                       </BackgroundImage2>
-                      <BackgroundImageAndText5 text="⚡ Acesso imediato aos cronogramas ao entrar na plataforma" additionalClassNames="w-[465.531px]" />
+                      <BackgroundImageAndText5 text="⚡ Acesso aos cronogramas após confirmação do pagamento e inscrição em curso (48h)" additionalClassNames="w-[465.531px]" />
                     </div>
                     <div className="h-[24px] relative shrink-0 w-full" data-name="Container">
                       <BackgroundImage2 additionalClassNames="absolute left-0 top-[4px]">
                         <path d={svgPaths.p24bc3d00} id="Vector" stroke="var(--stroke-0, #1C398E)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.66667" />
                         <path d={svgPaths.p3e238c80} id="Vector_2" stroke="var(--stroke-0, #1C398E)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.66667" />
                       </BackgroundImage2>
-                      <BackgroundImageAndText5 text="📹 Videoaulas liberadas gradualmente conforme o cronograma" additionalClassNames="w-[477.922px]" />
+                      <BackgroundImageAndText5 text="📹 +250 videoaulas gravadas (5 a 10 por disciplina) disponibilizadas progressivamente. Acesso em até 48h" additionalClassNames="w-[477.922px]" />
                     </div>
                     <div className="bg-[#1c398e] h-[60px] relative rounded-[10px] shrink-0 w-full" data-name="Container">
                       <BackgroundImage3 additionalClassNames="absolute left-[16px] top-[20px]">
@@ -2558,12 +2610,65 @@ export default function App() {
         </div>
       </div>
       
-      {/* Seção Passo a Passo da Compra */}
-      <div id="passo-a-passo" className="absolute left-0 top-[13768px] w-[1528px]" data-name="StepByStepSection">
+      {/* Mobile Sections - Lazy Loaded for Performance */}
+      <Suspense fallback={null}>
+        {/* Nova Seção Sobre Geração Mil - Mobile Only */}
+        <SobreGeracaoMil />
+        
+        {/* Nova Seção História - Mobile Only */}
+        <HistoriaSection />
+        
+        {/* Nova Seção Resultados - Mobile Only */}
+        <ResultadosSection />
+        
+        {/* Nova Seção Contato Mobile - Mobile Only */}
+        <ContatoMobile />
+        
+        {/* Nova Seção Professores - Mobile Only */}
+        <ProfessoresSection />
+        
+        {/* Nova Seção Resultados que Inspiram - Mobile Only */}
+        <ResultadosInspiramSection />
+        
+        {/* Nova Seção Plataforma Multiplataforma - Mobile Only */}
+        <PlataformaMultiplataformaSection />
+        
+        {/* Nova Seção Aulões Presenciais - Mobile Only */}
+        <AuloesPresenciaisSection />
+        
+        {/* Nova Seção Redes Sociais - Mobile Only */}
+        <RedesSociaisSection />
+        
+        {/* Nova Seção Nosso Instagram - Mobile Only */}
+        <NossoInstagramSection />
+        
+        {/* Nova Seção Materiais Didáticos - Mobile Only */}
+        <MateriaisDidaticosSection />
+        
+        {/* Nova Seção CTA Acesso ao Conteúdo - Mobile Only */}
+        <AcessoConteudoCTASection />
+        
+        {/* Nova Seção Planos - Mobile Only */}
+        <PlanosMobile />
+        
+        {/* Seção Passo a Passo da Compra - MOBILE ONLY */}
+        <div id="passo-a-passo" className="block md:hidden">
+          <PassoAPassoCompra />
+        </div>
+        
+        {/* Nova Seção FAQ - Mobile Only */}
+        <FAQMobile />
+        
+        {/* Novo Footer - Mobile Only */}
+        <FooterMobile />
+      </Suspense>
+      
+      {/* Seção Passo a Passo da Compra - DESKTOP ONLY */}
+      <div id="passo-a-passo-desktop" className="hidden md:block absolute left-0 top-[13768px] w-[1528px] overflow-hidden" data-name="StepByStepSection">
         <PassoAPassoCompra />
       </div>
 
-      <div id="planos" className="absolute content-stretch flex flex-col h-[1746px] items-start left-[8px] pb-0 pt-[96px] px-0 top-[15468px] w-[1528px]" data-name="PlansSection">
+      <div id="planos-desktop" className="hidden md:flex absolute content-stretch flex-col h-[1746px] items-start left-[8px] pb-0 pt-[96px] px-0 top-[15468px] w-[1528px] overflow-hidden" data-name="PlansSection">
         <BackgroundImage />
         <div className="h-[1554px] relative shrink-0 w-full" data-name="Container">
           <div className="absolute h-[92px] left-[16px] top-0 w-[1496px]" data-name="Container">
@@ -2584,7 +2689,7 @@ export default function App() {
                   <p className="absolute font-['Arimo:Regular',sans-serif] font-normal leading-[24px] left-[181.64px] text-[#4a5565] text-[16px] text-center text-nowrap top-[-2px] translate-x-[-50%]">Redação + Matemática</p>
                 </div>
                 <div className="absolute h-[42px] left-0 top-[80px] w-[364px]" data-name="Container">
-                  <p className="absolute font-['Arimo:Bold',sans-serif] font-bold leading-[40px] left-[161.06px] text-[#1c398e] text-[36px] text-center text-nowrap top-0 translate-x-[-50%]">R$ 89,90</p>
+                  <p className="absolute font-['Arimo:Bold',sans-serif] font-bold leading-[40px] left-[161.06px] text-[#1c398e] text-[36px] text-center text-nowrap top-0 translate-x-[-50%]">R$ 29,90</p>
                   <div className="absolute content-stretch flex h-[24px] items-start left-[234.3px] top-[16px] w-[42.141px]" data-name="Text">
                     <p className="font-['Arimo:Bold',sans-serif] font-bold leading-[28px] relative shrink-0 text-[#4a5565] text-[18px] text-center text-nowrap">/mês</p>
                   </div>
@@ -2624,7 +2729,7 @@ export default function App() {
                 </div>
               </div>
               <a 
-                href="https://pay.hotmart.com/T103705923C" 
+                href="https://pay.hotmart.com/U104186150S?bid=1769998745714" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 id="btn-plano-basico-regular"
@@ -2646,7 +2751,7 @@ export default function App() {
                   <p className="absolute font-['Arimo:Regular',sans-serif] font-normal leading-[24px] left-[193.91px] text-[#193cb8] text-[16px] text-center text-nowrap top-[-1.95px] translate-x-[-50%]">Todas as disciplinas</p>
                 </div>
                 <div className="absolute h-[44.101px] left-0 top-[84px] w-[386.4px]" data-name="Container">
-                  <p className="absolute font-['Arimo:Bold',sans-serif] font-bold leading-[40px] left-[171.66px] text-[#1c398e] text-[36px] text-center text-nowrap top-[-3.2px] translate-x-[-50%]">R$ 129,90</p>
+                  <p className="absolute font-['Arimo:Bold',sans-serif] font-bold leading-[40px] left-[171.66px] text-[#1c398e] text-[36px] text-center text-nowrap top-[-3.2px] translate-x-[-50%]">R$ 59,90</p>
                   <div className="absolute content-stretch flex h-[25.2px] items-start left-[258.97px] top-[16.8px] w-[44.248px]" data-name="Text">
                     <p className="basis-0 font-['Arimo:Bold',sans-serif] font-bold grow leading-[28px] min-h-px min-w-px relative shrink-0 text-[#193cb8] text-[18px] text-center">/mês</p>
                   </div>
@@ -2690,7 +2795,7 @@ export default function App() {
                 </div>
               </div>
               <a 
-                href="https://pay.hotmart.com/L103735493W"
+                href="https://pay.hotmart.com/Q104185324S?bid=1769998742696"
                 target="_blank"
                 rel="noopener noreferrer"
                 id="btn-plano-completo-regular"
@@ -2707,167 +2812,6 @@ export default function App() {
               </a>
               <div className="absolute bg-[#1c398e] h-[37.8px] left-[147.11px] rounded-[3.35544e+07px] top-[-16.8px] w-[159.37px]" data-name="Container">
                 <p className="absolute font-['Arimo:Bold',sans-serif] font-bold leading-[20px] left-[25.2px] text-[#fdc700] text-[14px] text-nowrap top-[6.4px]">MAIS POPULAR</p>
-              </div>
-            </div>
-          </div>
-          
-          {/* Card Promocional 48h */}
-          <div className="absolute h-[360px] left-[166px] top-[790px] w-[1196px]" data-name="PromoContainer">
-            <div className="absolute inset-0 bg-gradient-to-br from-[#ff0844] via-[#ff3366] to-[#ff0844] rounded-[24px] shadow-[0px_30px_60px_-15px_rgba(255,8,68,0.5)]">
-              {/* Logo GM com círculo amarelo */}
-              <div className="absolute left-[32px] top-[32px] w-[80px] h-[80px] flex items-center justify-center">
-                {/* Círculo amarelo como botão */}
-                <div className="absolute w-[80px] h-[80px] bg-[#fdc700] rounded-full shadow-[0px_8px_16px_-4px_rgba(0,0,0,0.3)]"></div>
-                {/* Logo GM */}
-                <img 
-                  src={imgLogoGMNovo}
-                  alt="Geração MIL - Logo GM" 
-                  className="relative z-10 w-[62px] h-[62px] object-contain"
-                />
-              </div>
-              
-              {/* Badge "PROMOÇÃO RELÂMPAGO" */}
-              <div className="absolute bg-[#fdc700] h-[48px] left-1/2 -translate-x-1/2 rounded-[24px] shadow-[0px_10px_20px_-5px_rgba(0,0,0,0.3)] top-[-20px] px-[32px] flex items-center justify-center">
-                <p className="font-['Arimo:Bold',sans-serif] font-bold text-[20px] text-[#1c398e] text-nowrap">⚡ PROMOÇÃO RELÂMPAGO - 48H ⚡</p>
-              </div>
-
-              {/* Conteúdo Principal */}
-              <div className="absolute left-[48px] right-[48px] top-[60px]">
-                {/* Título e Data */}
-                <div className="text-center mb-[24px]">
-                  <p className="font-['Arimo:Bold',sans-serif] font-bold text-[32px] text-white leading-[40px] mb-[8px]">
-                    🔥 Última Chance para Garantir Desconto!
-                  </p>
-                  <p className="font-['Arimo:Regular',sans-serif] text-[20px] text-white leading-[28px]">
-                    Válido apenas no dia <span className="font-['Arimo:Bold',sans-serif] font-bold text-[#fdc700]">16/01/2026</span> por <span className="font-['Arimo:Bold',sans-serif] font-bold text-[#fdc700]">48 horas</span>
-                  </p>
-                </div>
-
-                {/* Grid de Planos Promocionais */}
-                <div className="grid grid-cols-2 gap-[32px] mt-[32px]">
-                  {/* Plano Básico Promocional */}
-                  <div className="bg-white rounded-[16px] p-[24px] shadow-[0px_20px_40px_-10px_rgba(0,0,0,0.3)]">
-                    <div className="text-center">
-                      <p className="font-['Arimo:Bold',sans-serif] font-bold text-[24px] text-[#1c398e] mb-[8px]">
-                        Plano Básico
-                      </p>
-                      <p className="font-['Arimo:Regular',sans-serif] text-[14px] text-[#4a5565] mb-[16px]">
-                        Redação + Matemática
-                      </p>
-                      
-                      {/* Preços */}
-                      <div className="mb-[16px]">
-                        <p className="font-['Arimo:Regular',sans-serif] text-[16px] text-[#6a7282] line-through mb-[4px]">
-                          De R$ 89,90
-                        </p>
-                        <div className="flex items-center justify-center gap-[8px]">
-                          <p className="font-['Arimo:Bold',sans-serif] font-bold text-[42px] text-[#ff0844] leading-[48px]">
-                            R$ 59,90
-                          </p>
-                          <p className="font-['Arimo:Bold',sans-serif] font-bold text-[18px] text-[#4a5565]">
-                            /mês
-                          </p>
-                        </div>
-                        <div className="bg-[#fdc700] rounded-[8px] px-[16px] py-[4px] inline-block mt-[8px]">
-                          <p className="font-['Arimo:Bold',sans-serif] font-bold text-[14px] text-[#1c398e]">
-                            💰 ECONOMIA DE R$ 30,00
-                          </p>
-                        </div>
-                      </div>
-                      
-                      {/* Botão Plano Básico */}
-                      <a 
-                        href="https://pay.hotmart.com/D103797634A" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        id="btn-plano-basico-promo"
-                        data-track="click-plano"
-                        data-plan="basico"
-                        data-price="59.90"
-                        data-original-price="89.90"
-                        data-discount="30.00"
-                        data-section="promocao-relampago"
-                        data-promotion="true"
-                        data-deadline="2026-01-16T23:59:59"
-                        className="block w-full bg-gradient-to-r from-[#ff0844] to-[#ff3366] hover:from-[#e00739] hover:to-[#e02d5c] text-white font-['Arimo:Bold',sans-serif] font-bold text-[18px] py-[16px] px-[32px] rounded-[12px] shadow-[0px_12px_24px_-6px_rgba(255,8,68,0.4)] hover:shadow-[0px_16px_32px_-8px_rgba(255,8,68,0.6)] transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]"
-                      >
-                        🚀 GARANTIR DESCONTO
-                      </a>
-                    </div>
-                  </div>
-
-                  {/* Plano Completo Promocional */}
-                  <div className="relative bg-gradient-to-br from-[#fdc700] to-[#ffdf20] rounded-[16px] p-[24px] shadow-[0px_20px_40px_-10px_rgba(0,0,0,0.3)] border-4 border-white">
-                    <div className="absolute bg-[#1c398e] h-[32px] left-1/2 -translate-x-1/2 rounded-[16px] top-[-16px] px-[20px] flex items-center justify-center">
-                      <p className="font-['Arimo:Bold',sans-serif] font-bold text-[14px] text-[#fdc700]">
-                        ⭐ MELHOR OFERTA
-                      </p>
-                    </div>
-                    
-                    <div className="text-center">
-                      <p className="font-['Arimo:Bold',sans-serif] font-bold text-[24px] text-[#1c398e] mb-[8px]">
-                        Plano Completo
-                      </p>
-                      <p className="font-['Arimo:Regular',sans-serif] text-[14px] text-[#193cb8] mb-[16px]">
-                        Todas as Disciplinas
-                      </p>
-                      
-                      {/* Preços */}
-                      <div className="mb-[16px]">
-                        <p className="font-['Arimo:Regular',sans-serif] text-[16px] text-[#193cb8] line-through mb-[4px]">
-                          De R$ 129,90
-                        </p>
-                        <div className="flex items-center justify-center gap-[8px]">
-                          <p className="font-['Arimo:Bold',sans-serif] font-bold text-[42px] text-[#ff0844] leading-[48px]">
-                            R$ 99,90
-                          </p>
-                          <p className="font-['Arimo:Bold',sans-serif] font-bold text-[18px] text-[#1c398e]">
-                            /mês
-                          </p>
-                        </div>
-                        <div className="bg-[#1c398e] rounded-[8px] px-[16px] py-[4px] inline-block mt-[8px]">
-                          <p className="font-['Arimo:Bold',sans-serif] font-bold text-[14px] text-[#fdc700]">
-                            💰 ECONOMIA DE R$ 30,00
-                          </p>
-                        </div>
-                      </div>
-                      
-                      {/* Botão Plano Completo */}
-                      <a 
-                        href="https://pay.hotmart.com/M103797378J" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        id="btn-plano-completo-promo"
-                        data-track="click-plano"
-                        data-plan="completo"
-                        data-price="99.90"
-                        data-original-price="129.90"
-                        data-discount="30.00"
-                        data-section="promocao-relampago"
-                        data-promotion="true"
-                        data-badge="melhor-oferta"
-                        data-deadline="2026-01-16T23:59:59"
-                        className="block w-full bg-[#1c398e] hover:bg-[#15307a] text-[#fdc700] font-['Arimo:Bold',sans-serif] font-bold text-[18px] py-[16px] px-[32px] rounded-[12px] shadow-[0px_12px_24px_-6px_rgba(28,57,142,0.4)] hover:shadow-[0px_16px_32px_-8px_rgba(28,57,142,0.6)] transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]"
-                      >
-                        ⭐ GARANTIR DESCONTO
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Aviso Importante */}
-                <div className="text-center mt-[20px]">
-                  <p className="font-['Arimo:Bold',sans-serif] font-bold text-[16px] text-[#1C398E]">
-                    ⏰ Oferta expira em 18/01/2026 às 23:59h • Vagas Limitadas!
-                  </p>
-                </div>
-                
-                {/* Texto de Parcelamento */}
-                <div className="text-center mt-[16px]">
-                  <p className="font-['Arimo:Regular',sans-serif] font-normal text-[16px] text-[#1C398E]">
-                    💳 Parcelamento em até 12x no cartão • 🔒 Pagamento seguro via Hotmart
-                  </p>
-                </div>
               </div>
             </div>
           </div>
